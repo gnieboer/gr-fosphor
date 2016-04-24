@@ -85,6 +85,14 @@ void base_sink_c_impl::worker()
 	/* Init GL context */
 	this->glctx_init();
 
+#ifdef _WIN32
+  GLenum err = glewInit();
+  if (GLEW_OK != err)
+  {
+    fprintf(stderr, "Glew initialization error: %s\n", glewGetErrorString(err));
+  }
+#endif 
+
 	/* Init fosphor */
 	{
 		/* (prevent // init of multiple instance to be gentle on the OpenCL

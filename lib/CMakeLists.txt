@@ -35,6 +35,16 @@ add_custom_command(
   COMMAND ${PYTHON_EXECUTABLE} -B mkresources.py fft.cl display.cl cmap_simple.glsl cmap_bicubic.glsl cmap_fallback.glsl DroidSansMonoDotted.ttf > ${CMAKE_CURRENT_BINARY_DIR}/fosphor/resource_data.c
 )
 
+if (WIN32)
+	find_package(GLEW REQUIRED)
+    include_directories(
+	    ${GLEW_INCLUDE_DIRS}
+	)
+	list(APPEND fosphor_libraries 
+ 		${GLEW_LIBRARIES}
+ 	)
+endif(WIN32)
+
 include_directories(
 	${OPENGL_INCLUDE_DIRS}
 	${OpenCL_INCLUDE_DIRS}

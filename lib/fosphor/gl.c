@@ -252,14 +252,6 @@ fosphor_gl_init(struct fosphor *self)
 	if (!gl)
 		return -ENOMEM;
 
-#ifdef USING_GLEW
-	GLenum err = glewInit();
-	if (GLEW_OK != err)
-	{
-		fprintf(stderr, "Glew initialization error: %s\n", glewGetErrorString(err));
-	}
-#endif 
-
 	self->gl = gl;
 
 	memset(gl, 0, sizeof(struct fosphor_gl_state));
