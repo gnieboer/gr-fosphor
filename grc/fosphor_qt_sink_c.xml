@@ -12,7 +12,7 @@ fosphor.qt_sink_c()
 self.$(id).set_fft_window($wintype)
 self.$(id).set_frequency_range($freq_center, $freq_span)
 self._$(id)_win = sip.wrapinstance(self.$(id).pyqwidget(), Qt.QWidget)
-$(gui_hint()($win))</make>
+$(gui_hint() % $win)</make>
   <callback>set_fft_window($wintype)</callback>
   <callback>set_frequency_range($freq_center, $freq_span)</callback>
   <param>
